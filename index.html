@@ -12,44 +12,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="refresh" content="7200">
-    <meta name="description" content="Watch Live TV Channels On 𝐏𝗿𝗶𝘆𝗼 𝐓𝐕. Join Now For The Best Streaming Experience!">
-    <meta name="keywords" content="Eamin Talukdar, Priyo TV, Bdix Live TV">
+
+    <meta name="description" content="Watch Live TV Channels On HridoyLive. Join Now For The Best Streaming Experience!">
+    <meta name="keywords" content="HridoyTV, HridoyLive, Bdix Live TV, Hossain Hridoy, IPTV, Lice sports, Live News">
     <meta name="robots" content="index, follow">
 
-    <title>𝐏𝗿𝗶𝘆𝗼 𝐓𝐕</title>
-    <link rel="icon" href="https://i.postimg.cc/kgBj5B1v/priyotv.png" type="image/png">
+    <title>HridoyLive - Premium Live Sports & News</title>
+    <link rel="icon" href="https://i.postimg.cc/PJzPVLjG/hridoylive.png" type="image/png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        :root { --bg-color: #ffffff; --accent: #ff0000; --tg-color: #0088cc; }
+        :root { --bg-color: #fff; --accent: #ff0000; --tg-color: #0088cc; }
         
         html, body { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             background-color: var(--bg-color); color: #000; 
-            font-family: 'Poppins', sans-serif; overflow: hidden; 
+            font-family: 'Poppins', sans-serif; overflow: hidden;
         }
 
         /* --- Preloader --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; display: flex; flex-direction: column;
+            background: #fff; display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 10000;
         }
         .loader-logo { width: 130px; height: auto; margin-bottom: 15px; animation: smoothPulse 2.5s infinite ease-in-out; }
-        .loader-title { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: 4px; text-transform: uppercase; }
-
+        .loader-title { font-size: 26px; font-weight: 800; color: #111; letter-spacing: 4px; text-transform: uppercase; }
+        
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* 🔥 লোগো + টেক্সট একদম সেন্টার */
+    justify-content: center;
+    text-align: center;
+}
         @keyframes smoothPulse { 0%, 100% { transform: scale(0.9); opacity: 0.6; } 50% { transform: scale(1); opacity: 1; } }
 
         /* Layout Structure */
         .wrapper { display: flex; flex-direction: column; height: 100vh; width: 100%; }
         .app-container { display: flex; flex: 1; overflow: hidden; }
         
-        .player-area { flex: 1.8; background: #ffffff; display: flex; flex-direction: column; border-right: 1px solid #222; padding: 6px 0; }
+        .player-area { flex: 1.8; background: #fff; display: flex; flex-direction: column; border-right: 1px solid #e5e5e5;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.04); padding: 6px 0; }
    
-        .content-area { flex: 1; display: flex; flex-direction: column; background: #f5f5f5; overflow: hidden; position: relative; }
+        .content-area { flex: 1; display: flex; flex-direction: column; background: #fff; overflow: hidden; position: relative; }
         
         /* Tabs */
         .tab-wrapper { background: #000; padding: 12px 8px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid #222; flex-shrink: 0; scrollbar-width: none; }
@@ -61,7 +70,7 @@
         .channel-container { flex: 1; overflow-y: auto; padding-bottom: 100px; }
         .channel-grid { padding: 12px; display: none; grid-template-columns: repeat(3, 1fr); gap: 12px; }
         .channel-grid.active { display: grid; }
-        .channel-card { position: relative; background: #111; border-radius: 10px; padding: 3px; cursor: pointer; aspect-ratio: 16 / 10; overflow: hidden; z-index: 1; }
+        .channel-card { position: relative; background: #f0f0f0; border-radius: 10px; padding: 2px; cursor: pointer; aspect-ratio: 16 / 10; overflow: hidden; z-index: 1; }
         .channel-card.active::before { content: ""; position: absolute; width: 400%; height: 400%; top: -150%; left: -150%; background: conic-gradient(from 0deg, #ff0000, #fbff00, #00ff11, #0044ff, #ff00ea, #ff0000); animation: rotate 1.5s linear infinite; z-index: -1; }
         .inner-card { background: #fff; width: 100%; height: 100%; border-radius: 7px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .inner-card img { max-width: 90%; max-height: 90%; transform: scale(1.3); }
@@ -101,7 +110,7 @@
         }
 
         /* Footer */
-        .footer-fixed { width: 100%; height: 40px; background: green; border-top: 1px solid #222; display: flex; align-items: center; justify-content: center; z-index: 10; }
+       
         .footer-text { font-size: 14px; font-weight: 800; color: #fff; margin: 0; }
 
         /* Responsive Fixes */
@@ -110,7 +119,7 @@
             .player-area { flex: none; padding: 0; border-right: none; }
             .video-box { width: 100%; border-radius: 0; border: none; }
             .channel-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-            .tg-wrapper { bottom: 65px; right: 20px; } 
+            .tg-wrapper { bottom: 65px; left: 20px; } 
         }
 
 #tvPlayer {
@@ -170,14 +179,14 @@
 .current-channel-inline {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 2px;
     max-width: 70%;
     overflow: hidden;
 }
 
 .current-channel-inline img {
-    width: 40px;
-    height: 30px;
+    width: 45px;
+    height: 35px;
     object-fit: contain;
     background: #fff;
     border-radius: 5px;
@@ -193,11 +202,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }  
+.player-controls-outside i {
+    margin-right: 3px;
+}
 
+.channel-title-bar i {
+    margin-right: 3px;
+}
 
 .channel-title-bar {
     padding: 10px 14px;
-    background: #ffffff;
+    background: #fff;
     border-bottom: 1px solid #e8e8e8;
 }
 
@@ -208,14 +223,85 @@
     color: #333;
     letter-spacing: 0.1px;    /* কম spacing */
     font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}</style>
+}
+
+/* 🔻 Footer default hide (desktop) */
+.footer-fixed {
+    display: none;
+}
+
+/* 🔻 Footer only for mobile */
+@media (max-width: 768px) {
+    .footer-fixed {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+     /* 🌿 Green glass effect */
+        background: rgba(0, 18, 0, 0.88);  /* green transparent */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(10px);
+
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+    }
+
+.channel-container {
+    padding-bottom: 120px;
+}
+}
+
+/* 🔻 Desktop: mytv পুরো remove (grid fill করবে) */
+.channel-card[data-channel="mytv"] {
+    display: none;
+}
+
+/* 🔻 Mobile only: blurred placeholder */
+@media (max-width: 768px) {
+    .channel-card[data-channel="mytv"] {
+        display: block;              /* mobile এ slot থাকবে */
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px dashed rgba(0,0,0,0.15);
+        box-shadow: none;
+        pointer-events: none;        /* click বন্ধ */
+    }
+
+    .channel-card[data-channel="mytv"] .inner-card {
+        background: transparent;
+    }
+
+    .channel-card[data-channel="mytv"] img {
+        display: none;
+    }
+
+    .channel-card[data-channel="mytv"]::after {
+        content: "HRIDOYLIVE";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: rgba(0,0,0,0.5);
+        text-transform: uppercase;
+    }
+    
+
+}
+</style>
 </head>
 <body>
 
 <div id="preloader">
     <div class="loader-content">
-        <img src="https://i.postimg.cc/kgBj5B1v/priyotv.png" class="loader-logo">
-        <h1 class="loader-title" style="color:white">𝐏𝐑𝐈𝐘𝐎 <span style="color:red">𝐓𝐕</span></h1>
+        <img src="https://i.ibb.co.com/FbGSFXKv/20260109-223054.jpg" class="loader-logo">
+        <h1 class="loader-title" style="color: green">HridoyLive</h1>
     </div>
 </div>
 
@@ -230,13 +316,15 @@
 <div class="wrapper">
     <div class="app-container">
         <div class="player-area">
-       <div class="video-box">
+           <div class="video-box">
 <video
   id="tvPlayer"
   controls
   playsinline
   webkit-playsinline
-></video> </div><div class="player-controls-outside">
+  poster="https://i.postimg.cc/PJzPVLjG/hridoylive.png"
+></video>
+ </div><div class="player-controls-outside">
 
     <div class="current-channel-inline" id="currentChannelInfo">
         <img id="currentChannelLogo" src="">
@@ -244,7 +332,7 @@
     </div>
 
     <button id="fullscreenBtn">
-        <i class="fas fa-expand"></i> Fullscreen
+      <i class="fas fa-compress"></i>  Fullscreen
     </button>
 
 </div>
@@ -253,7 +341,7 @@
     <div class="content-area">
            
  <div class="channel-title-bar">
-    <h2>All Premium Sports and News Channel</h2>
+    <h2><i class="fas fa-tv"></i>  Premium Live Sports & News</h2>
 </div>
             <div class="channel-container">
                                     <div id="cat_0" class="channel-grid active">
@@ -317,8 +405,7 @@
                                     <img src="https://i.postimg.cc/kMLRN93q/20250529_123147.png" alt="Priyo TV">
                                 </div>
                             </div>
-                                            </div>
-                                    <div id="cat_1" class="channel-grid ">
+       
                                                     <div class="channel-card item-box" onclick="loadChannel('btv', this)">
                                 <div class="inner-card">
                                     <img src="https://i.postimg.cc/JnWdHSrq/20250529-071604.png" alt="Priyo TV">
@@ -394,7 +481,7 @@
                                     <img src="https://i.postimg.cc/8kmxMkrr/20250529_101852.png" alt="Priyo TV">
                                 </div>
                             </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('mytv', this)">
+                                    <div class="channel-card item-box" data-channel="mytv" onclick="loadChannel('mytv', this)">
                                 <div class="inner-card">
                                     <img src="https://i.postimg.cc/HxGF4V2b/20250529_103226.png" alt="Priyo TV">
                                 </div>
@@ -410,217 +497,12 @@
                                 </div>
                             </div>
                                             </div>
-                                    <div id="cat_2" class="channel-grid ">
-                                                    <div class="channel-card item-box" onclick="loadChannel('starjalsha', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/hvRgj26W/20250529-105408.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('zeebangla', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/ry5MbLR8/20250529-105712.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('colorsbangla', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/HLdjn6zR/20250602_220804.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('enterr10', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/LX122cy3/20250529-111624.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('sonyaath', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/ZqgJkbLq/20250529-111438.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('akashbangla', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/PJ5V7VsN/20250711_062758.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('ruposhibangla', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/pLs2ZYhz/20250529_111853.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('jalshamovies', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/T2nGNxc8/20250707_053157.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('zeebanglacinema', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/Zq0JDBpg/20250529_110358.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                            </div>
-                                    <div id="cat_3" class="channel-grid ">
-                                                    <div class="channel-card item-box" onclick="loadChannel('colors', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/pdy3k1qZ/20251202_090150.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('andtv', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/bJzsJNt9/20250529_133255.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('andpicture', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/k5N2qtB5/20250529_133459.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('starmovies', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/TYcpKMDZ/20251222_213635.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('starplus', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/q7gWQZjw/20251202_090307.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('stargold', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/PqN0KF2M/20251202_090224.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('zeetv', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/1z18kKRT/20250529_133622.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('zeecinema', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/nhDsSWxB/20250529_133753.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('zeebollywood', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/52SzwQF1/20251222_220548.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('hum', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/RFXqn515/20250529_132912.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('b4umovie', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/13nLvxQx/20250630_050504.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('sonytelevision', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/0yDQ0JGC/20250529_131726.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('sonymax', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/zX9vhkhB/20250529_131834.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('sonymaxhd', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/zX9vhkhB/20250529_131834.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('sonymax2', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/KYbYqvJh/20250529_132238.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                            </div>
-                                    <div id="cat_4" class="channel-grid ">
-                                                    <div class="channel-card item-box" onclick="loadChannel('duronto', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/s2WM2BPR/20251127_095726.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('nick', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/5y5VX5t9/20250707_053227.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('pogo', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/W3FbtF4r/20250529_115709.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('discoverykids', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/pXdcjfHg/20250529_115821.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('cartoonnetwork', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/zvTzSsKG/20250529-115440.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('sonyyay', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/wBbj6c9g/20250529_115914.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                            </div>
-                                    <div id="cat_5" class="channel-grid ">
-                                                    <div class="channel-card item-box" onclick="loadChannel('sangeetbangla', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/pdddb1bs/20250529_120025.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('9xm', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/P5yq7ncL/20250529_120144.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('zoom', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/7hz6tG8D/20250529_121941.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('yrfmusic', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/hPFhzrTG/20250529_121624.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('showbox', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/MKyHyQmm/20250529_120709.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('b4umusic', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/ZqfCWzxk/20250529_122103.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                            </div>
-                                    <div id="cat_6" class="channel-grid ">
-                                                    <div class="channel-card item-box" onclick="loadChannel('discoveryhd', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/k4xxp7zh/20251002_232031.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('animalplanet', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/qR885pSD/20251002_231959.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                                    <div class="channel-card item-box" onclick="loadChannel('natgeo', this)">
-                                <div class="inner-card">
-                                    <img src="https://i.postimg.cc/Zn4KK0kW/20251031_210443.png" alt="Priyo TV">
-                                </div>
-                            </div>
-                                            </div>
                             </div>
         </div>
     </div>
 
     <footer class="footer-fixed">
-        <p class="footer-text">© 2026  <span style="color: yellow"> HridoyLive by HridoyTV</span></p>
+        <p class="footer-text">© 2026  <span style="color: yellow"> HridoyLive</span> by <span style="color: yellow"> HridoyTV</span></p>
     </footer>
 </div>
 
@@ -660,11 +542,11 @@ const channels = {
 // 🔵 এইটা যোগ করো
 const channelInfo = {
     tsports: {
-        name: "T sports",
+        name: "T SPORTS",
         logo: "https://i.postimg.cc/8zQ0DYBH/20250720_201346.png"
     },
     nagoriktv: {
-        name: "Nagorik TV",
+        name: "NAGORIK TV",
         logo: "https://i.postimg.cc/JzGFfbYb/20250529-072833.png"
     }
     // চাইলে এখানেই সব চ্যানেল add করবে
@@ -742,5 +624,7 @@ fsBtn.addEventListener('click', () => {
     }
 });
 </script>
+
+
 </body>
 </html>
