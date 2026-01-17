@@ -32,7 +32,7 @@
             background-color: var(--bg-color); color: #000; 
             font-family: 'Poppins', sans-serif; overflow: hidden;
         }
-
+ 
         /* --- Preloader --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -67,7 +67,7 @@
         .tab-btn.active { background: green; color: #fff; border-color: green;}
 
         /* Channel Grid */
-        .channel-container { flex: 1; overflow-y: auto; padding-bottom: 100px; }
+        .channel-container { flex: 1; overflow-y: auto; padding-bottom: 0px; }
         .channel-grid { padding: 12px; display: none; grid-template-columns: repeat(3, 1fr); gap: 12px;}
         .channel-grid.active { display: grid; }
         .channel-card { position: relative; background: black; border-radius: 10px; padding: 3px; cursor: pointer; aspect-ratio: 16 / 10; overflow: hidden; z-index: 1; }
@@ -145,6 +145,8 @@
     font-size: 13px;
     cursor: pointer;
     flex-shrink: 0;        /* 🔥 button কখনো চাপা যাবে না */
+    margin-left: auto;   /* 🔥 সবসময় ডানে */
+    flex: 0 0 auto;      /* 🔥 কখনো নড়বে না */
 }
 
 .video-box {
@@ -195,6 +197,7 @@
     object-fit: cover;
     background: #fff;
     border: 1px solid #e0e0e0;
+  
 }
 
 /* 👑 FA Premium Icon */
@@ -211,7 +214,7 @@ display: flex;              /* 🔥 MUST */
     background: linear-gradient(135deg, #f1c232, #d4a017);
     border-radius: 50%;
 
-
+z-index: 99;   /* 🔥 ADD THIS */
     align-items: center;
     justify-content: center;
 transform: translate(-2px, 2px);
@@ -225,15 +228,18 @@ transform: translate(-2px, 2px);
 text-shadow: 0 1px 2px rgba(0,0,0,0.6);
     /* 🔥 REAL FIX */
     display: block;
-    transform: translateX(1.4px);  /* 👈 FA glyph optical center fix */
+    transform: translateX(1.5px);  /* 👈 FA glyph optical center fix */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
 .current-channel-inline {
     display: flex;
     align-items: center;
     gap: 8px;
-    max-width: 70%;
-    overflow: visible;
+
+    flex: 1;          /* 🔥 নাম যত বড় হোক */
+    min-width: 0;     /* 🔥 shrink allow */
+   overflow: visible;   /* ✅ BADGE CUT হবে না */
 }
 
 .current-channel-text {
@@ -338,7 +344,7 @@ border-top: 1px solid #222;
     }
 
 .channel-container {
-    padding-bottom: 120px;
+    padding-bottom: 0px;
 }
 }
 
@@ -466,8 +472,8 @@ border-top: 1px solid #222;
 .channel-list-footer-pro {
     margin-left: 10px;margin-right: 10px;
     padding: 10px;
-    
-
+    margin-top: 0px;   /* ✅ ফাঁকা এখানেই */
+margin-bottom:120px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
@@ -489,6 +495,246 @@ border-top: 1px solid #222;
     letter-spacing: 1px;
     text-shadow: 0 0 8px rgba(0,180,90,0.45);
 }
+
+
+/* ================================
+   CONTACT US – CLEAN + HAPTIC CSS
+   ================================ */
+
+/* Anchor reset (ONLY Contact Us) */
+.contact-us-link,
+.contact-us-link:link,
+.contact-us-link:visited,
+.contact-us-link:hover,
+.contact-us-link:active {
+    text-decoration: none !important;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent; /* mobile blue highlight off */
+}
+
+/* Contact Us label base style */
+.contact-us-link .tg-label {
+    text-decoration: none !important;
+
+    /* haptic animation setup */
+    transition:
+        transform 0.18s cubic-bezier(.34,1.56,.64,1),
+        box-shadow 0.12s ease,
+        opacity 0.12s ease;
+
+    will-change: transform;
+    user-select: none;
+}
+
+/* HAPTIC-LIKE PRESS EFFECT */
+.contact-us-link:active .tg-label {
+    transform: scale(0.94);              /* press down feel */
+    opacity: 0.85;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.45) inset;
+}
+
+/* Optional: hover polish (desktop only) */
+@media (hover: hover) {
+    .contact-us-link:hover .tg-label {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+}
+
+
+/* 🔰 Player Watermark Logo */
+.player-watermark {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 50;
+    pointer-events: none; /* 🔥 click block হবে না */
+    opacity: 0.85;
+}
+
+.player-watermark img {
+    width: 50px;          /* desktop size */
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7));
+}
+
+/* 📱 Mobile fix */
+@media (max-width: 768px) {
+    .player-watermark img {
+        width: 36px;
+    }
+}
+
+/* 🖥️ Fullscreen support */
+#tvPlayer:fullscreen + .player-watermark,
+#tvPlayer:-webkit-full-screen + .player-watermark {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+}
+
+/* =========================
+   🔥 TRUE FULLSCREEN FIX
+   ========================= */
+
+/* Fullscreen container */
+.video-box:fullscreen,
+.video-box:-webkit-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: black;
+}
+
+/* Video fill screen */
+.video-box:fullscreen video,
+.video-box:-webkit-full-screen video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;   /* 🔥 পুরো স্ক্রিন ভরবে */
+    margin: 0 !important;
+}
+
+/* =========================
+   🔰 FINAL FULLSCREEN LOGO
+   ========================= */
+
+.video-box:fullscreen .player-watermark,
+.video-box:-webkit-full-screen .player-watermark {
+    position: fixed;
+    top: 40px;        /* 🔥 safe distance */
+    right: 40px;
+    z-index: 9999;
+    opacity: 0.95;
+}
+
+.video-box:fullscreen .player-watermark img,
+.video-box:-webkit-full-screen .player-watermark img {
+    width: 96px;      /* 🔥 বড় স্ক্রিনে বড় */
+    max-width: none;
+}
+
+/* Mobile fullscreen */
+@media (max-width: 768px) {
+    .video-box:fullscreen .player-watermark img {
+        width: 64px;
+    }
+}
+
+
+
+/* CENTER */
+.center-controls {
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  z-index:15;
+}
+
+.center-controls button {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:40px;
+}
+
+/* BOTTOM */
+.player-bottom {
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:96%;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  z-index:20;
+}
+
+.player-bottom .row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+}
+
+.player-bottom input[type=range] {
+  flex:1;
+}
+
+.bottom-icons {
+  justify-content:space-between;
+}
+
+.player-bottom button {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:18px;
+}
+
+.live-badge {
+  background:red;
+  padding:2px 6px;
+  font-size:11px;
+  border-radius:4px;
+}
+
+.controls-hidden {
+  opacity:0;
+  pointer-events:none;
+}
+
+/* SETTINGS */
+.settings-menu {
+  position:absolute;
+  bottom:90px;
+  right:10px;
+  background:#111;
+  border-radius:6px;
+  display:none;
+  z-index:30;
+}
+
+.settings-menu button {
+  background:none;
+  border:none;
+  color:#fff;
+  padding:8px 12px;
+  width:100%;
+  text-align:left;
+}
+
+
+/* 🔄 PLAYER LOADING */
+.player-loading{
+  position:absolute;
+  inset:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:300;
+}
+
+.spinner{
+  width:48px;
+  height:48px;
+  border:4px solid rgba(255,255,255,0.2);
+  border-top:4px solid #00b45a;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
 </style>
 </head>
 <body>
@@ -503,12 +749,11 @@ border-top: 1px solid #222;
 </div>
 
 <div class="tg-wrapper">
-    <a href="https://t.me/bpltve" target="_blank" class="tg-btn">
+    <a href="https://t.me/hossain_hridoy" target="_blank" class="tg-btn">
         <i class="fab fa-telegram-plane"></i>
     </a>
-    <div class="tg-label">Contact US</div>
+    <a href="https://t.me/hossain_hridoy" target="_blank" class="contact-us-link"> <div class="tg-label">Live Support</div>  </a>
 </div>
-
 
 <div class="wrapper">
     <div class="app-container">
@@ -516,11 +761,62 @@ border-top: 1px solid #222;
           <div class="video-box">
 <video
   id="tvPlayer"
-  controls
+  
   playsinline
   webkit-playsinline
   poster="https://i.postimg.cc/PJzPVLjG/hridoylive.png"
 ></video>
+
+<!-- 🔄 LOADING OVERLAY -->
+<div class="player-loading" id="playerLoading">
+  <div class="spinner"></div>
+</div>
+
+<!-- CENTER CONTROLS -->
+<div class="center-controls" id="centerControls">
+  <button id="prevBtn"><i class="fas fa-backward"></i></button>
+  <button id="playBtn"><i class="fas fa-play"></i></button>
+  <button id="nextBtn"><i class="fas fa-forward"></i></button>
+</div>
+
+<!-- BOTTOM CONTROLS -->
+<div class="player-bottom controls-hidden" id="playerControls">
+
+  <!-- Line 1 -->
+  <div class="row">
+    <span id="curTime">0:00</span>
+    <input type="range" id="seekBar" min="0" max="100" value="0">
+    <span id="durTime">LIVE</span>
+  </div>
+
+  <!-- Line 2 -->
+  <div class="row bottom-icons">
+    <span class="live-badge">LIVE</span>
+
+    <input type="range" id="volBar" min="0" max="1" step="0.01" value="1">
+
+    <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+    <button id="settingsBtn"><i class="fas fa-cog"></i></button>
+    <button id="pipBtn"><i class="fas fa-clone"></i></button>
+    <button id="fsBtn"><i class="fas fa-expand"></i></button>
+  </div>
+
+</div>
+
+<!-- SETTINGS MENU -->
+<div class="settings-menu" id="settingsMenu">
+  <button data-speed="0.5">Speed 0.5×</button>
+  <button data-speed="1">Speed 1×</button>
+  <button data-speed="1.5">Speed 1.5×</button>
+  <button data-speed="2">Speed 2×</button>
+</div>
+
+
+<!-- 🔰 Player Watermark Logo -->
+<div class="player-watermark">
+    <img src="https://i.postimg.cc/PJzPVLjG/hridoylive.png" alt="HridoyTV">
+</div>
+
  </div>
  
  <div class="player-controls-outside">
@@ -768,7 +1064,7 @@ function openTab(evt, catId) {
 // চ্যানেল স্ট্রিম লিংক
 const channels = {
     tsports: "https://hridoytv.hridoyx.workers.dev/channel/jamunatv",
-    nagoriktv: "https://hridoytv.hridoyx.workers.dev/channel/jamunatv"
+    nagoriktv: "https://server.zillarbarta.com/zillarbarta/index.m3u8"
 };
 
 // চ্যানেল ইনফো
@@ -856,22 +1152,211 @@ if (channelInfo[id]?.premium) {
 </script>
 
 <script>
+/* =========================
+   ELEMENTS
+========================= */
 const video = document.getElementById('tvPlayer');
-const fsBtn = document.getElementById('fullscreenBtn');
+const box = document.querySelector('.video-box');
 
-fsBtn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-        if (video.requestFullscreen) {
-            video.requestFullscreen();
-        } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen();
-        }
-    } else {
-        document.exitFullscreen();
-    }
+const centerControls = document.getElementById('centerControls');
+const controls = document.getElementById('playerControls');
+const loading = document.getElementById('playerLoading');
+
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+const seekBar = document.getElementById('seekBar');
+const curTime = document.getElementById('curTime');
+const durTime = document.getElementById('durTime');
+
+const volBar = document.getElementById('volBar');
+const muteBtn = document.getElementById('muteBtn');
+
+const fsBtn = document.getElementById('fsBtn');
+const pipBtn = document.getElementById('pipBtn');
+const settingsBtn = document.getElementById('settingsBtn');
+const settingsMenu = document.getElementById('settingsMenu');
+
+/* =========================
+   STATE
+========================= */
+let hideTimer = null;
+let controlsVisible = false;
+
+/* =========================
+   INITIAL STATE
+========================= */
+hideControls();          // ❗ শুরুতে কন্ট্রোল লুকানো
+loading.style.display = 'flex';
+
+/* =========================
+   PLAY / PAUSE (ONLY BUTTON)
+========================= */
+function togglePlay(){
+  video.paused ? video.play().catch(()=>{}) : video.pause();
+}
+
+playBtn.addEventListener('click', e=>{
+  e.stopPropagation();
+  togglePlay();
 });
+
+/* =========================
+   ICON SYNC
+========================= */
+video.addEventListener('play', ()=>{
+  playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  startAutoHide();
+});
+
+video.addEventListener('pause', ()=>{
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  showControls(); // pause হলে দেখাবে
+});
+
+/* =========================
+   PLAYER CLICK → TOGGLE CONTROLS
+========================= */
+box.addEventListener('click', ()=>{
+  controlsVisible ? hideControls() : showControls();
+});
+
+/* =========================
+   SHOW / HIDE
+========================= */
+function showControls(){
+  controls.classList.remove('controls-hidden');
+  centerControls.classList.remove('controls-hidden');
+  controlsVisible = true;
+  startAutoHide();
+}
+
+function hideControls(){
+  controls.classList.add('controls-hidden');
+  centerControls.classList.add('controls-hidden');
+  controlsVisible = false;
+  clearTimeout(hideTimer);
+}
+
+function startAutoHide(){
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(()=>{
+    if(!video.paused){
+      hideControls();
+    }
+  }, 5000);
+}
+
+/* =========================
+   SKIP
+========================= */
+prevBtn.onclick = e=>{
+  e.stopPropagation();
+  if(video.duration) video.currentTime = Math.max(0, video.currentTime - 10);
+};
+
+nextBtn.onclick = e=>{
+  e.stopPropagation();
+  if(video.duration) video.currentTime = Math.min(video.duration, video.currentTime + 10);
+};
+
+/* =========================
+   TIME / SEEK
+========================= */
+video.addEventListener('timeupdate', ()=>{
+  if(!video.duration){
+    durTime.textContent = 'LIVE';
+    return;
+  }
+  seekBar.value = (video.currentTime/video.duration)*100;
+  curTime.textContent = format(video.currentTime);
+  durTime.textContent = format(video.duration);
+});
+
+seekBar.oninput = e=>{
+  e.stopPropagation();
+  if(video.duration){
+    video.currentTime = (seekBar.value/100)*video.duration;
+  }
+};
+
+/* =========================
+   VOLUME
+========================= */
+volBar.oninput = e=>{
+  e.stopPropagation();
+  video.volume = volBar.value;
+};
+
+muteBtn.onclick = e=>{
+  e.stopPropagation();
+  video.muted = !video.muted;
+  muteBtn.innerHTML = video.muted
+    ? '<i class="fas fa-volume-mute"></i>'
+    : '<i class="fas fa-volume-up"></i>';
+};
+
+/* =========================
+   FULLSCREEN (FIXED)
+========================= */
+fsBtn.onclick = e=>{
+  e.stopPropagation(); // 🔥 এটা না থাকলে কাজ করবে না
+  if(!document.fullscreenElement){
+    box.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
+};
+
+/* =========================
+   PIP
+========================= */
+pipBtn.onclick = async e=>{
+  e.stopPropagation();
+  try{
+    document.pictureInPictureElement
+      ? await document.exitPictureInPicture()
+      : await video.requestPictureInPicture();
+  }catch{}
+};
+
+/* =========================
+   SETTINGS
+========================= */
+settingsBtn.onclick = e=>{
+  e.stopPropagation();
+  settingsMenu.style.display =
+    settingsMenu.style.display === 'block' ? 'none' : 'block';
+};
+
+settingsMenu?.querySelectorAll('[data-speed]').forEach(b=>{
+  b.onclick = ()=>{
+    video.playbackRate = Number(b.dataset.speed);
+    settingsMenu.style.display = 'none';
+  };
+});
+
+/* =========================
+   LOADING
+========================= */
+video.addEventListener('waiting', ()=>{
+  loading.style.display = 'flex';
+});
+
+video.addEventListener('canplay', ()=>{
+  loading.style.display = 'none';
+  // ❗ এখানে showControls() নাই — চ্যানেল লোডে কন্ট্রোল দেখাবে না
+});
+
+/* =========================
+   UTILS
+========================= */
+function format(t){
+  const m = Math.floor(t/60);
+  const s = Math.floor(t%60).toString().padStart(2,'0');
+  return `${m}:${s}`;
+}
 </script>
-
-
 </body>
 </html>
