@@ -25,6 +25,10 @@
             background-color: var(--bg-color); color: #000; 
             font-family: 'Poppins', sans-serif; overflow: hidden;
         }
+        
+        .channel-container {
+    overflow-y: auto;
+    pointer-events: auto;
  
         /* --- Preloader --- */
         #preloader {
@@ -1034,19 +1038,14 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 
-@media (min-width: 769px) {
-  .content-area {
-    position: relative;
-    z-index: 5;
-  }
 
-  .player-area {
-    position: relative;
+.player-area {
     z-index: 1;
-  }
 }
 
-
+.content-area {
+    z-index: 10;
+}
 </style>
 </head>
 <body>
@@ -1563,7 +1562,7 @@ const durTime = document.getElementById('durTime');
 const muteBtn = document.getElementById('muteBtn');
 
 const fsBtn = document.getElementById('fsBtn');
-const fullscreenBtn = document.getElementById('fullscreenBtn');
+
 const pipBtn = document.getElementById('pipBtn');
 const settingsBtn = document.getElementById('settingsBtn');
 const settingsMenu = document.getElementById('settingsMenu');
