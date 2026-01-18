@@ -7,7 +7,16 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-FZXQ8N910Y');
-    </script>
+    </script><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Page title</title>
+    </head>
+    <body>
+        
+    </body>
+    </html>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -692,15 +701,6 @@ margin-bottom:120px;
 }
 
 /* SETTINGS */
-.settings-menu {
-  position:absolute;
-  bottom:90px;
-  right:10px;
-  background:#111;
-  border-radius:6px;
-  display:none;
-  z-index:30;
-}
 
 .settings-menu button {
   background:none;
@@ -734,6 +734,290 @@ margin-bottom:120px;
 
 @keyframes spin{
   to{transform:rotate(360deg);}
+}
+
+
+
+.settings-group{
+  margin-bottom:10px;
+}
+
+.settings-title{
+  font-size:11px;
+  color:#aaa;
+  margin-bottom:6px;
+}
+
+.settings-menu button{
+  width:100%;
+  background:none;
+  border:none;
+  color:#fff;
+  padding:6px;
+  text-align:left;
+  font-size:12px;
+}
+
+.settings-menu button.active{
+  color:#00b45a;
+}
+
+
+/* =========================
+   🎚️ CUSTOM RANGE STYLE
+   ========================= */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;                 /* 🔥 চিকন বার */
+  background: rgba(255,255,255,0.25);
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 🔥 Filled part (Chrome / Edge) */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #00b45a 0%,
+    #00b45a var(--progress, 0%),
+    rgba(255,255,255,0.25) var(--progress, 0%)
+  );
+  border-radius: 50px;
+}
+
+/* 🔥 Thumb (dot) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #00b45a;
+  border-radius: 50%;
+  margin-top: -4px;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50px;
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 4px;
+  background: #00b45a;
+  border-radius: 50px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #00b45a;
+  border-radius: 50%;
+  border: none;
+}
+
+
+/* ⏱️ Seekbar Time Text (Small & Clean) */
+#curTime,
+#durTime {
+  font-size: 10px;        /* 🔥 ছোট সাইজ */
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  min-width: 34px;        /* 🔥 layout নড়বে না */
+  text-align: center;
+  letter-spacing: 0.3px;
+  
+ background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+
+/* 🔥 UNIVERSAL VISIBILITY FIX (TEXT + ICON + FA) */
+.player-bottom,
+.center-controls,
+#curTime,
+#durTime,
+.player-bottom i,
+.center-controls i {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+
+
+/* =========================
+   FULLSCREEN UI SCALE FIX
+   ========================= */
+
+.video-box:fullscreen,
+.video-box:-webkit-full-screen {
+  font-size: 16px; /* 🔥 base size বাড়ালাম */
+}
+
+.video-box:fullscreen .center-controls button,
+.video-box:-webkit-full-screen .center-controls button {
+  font-size: 64px;      /* 🔥 বড় আইকন */
+}
+
+.video-box:fullscreen .player-bottom,
+.video-box:-webkit-full-screen .player-bottom {
+  bottom: 40px;         /* 🔥 নিচ থেকে উপরে */
+  width: 94%;
+  gap: 10px;
+}
+
+.video-box:fullscreen input[type="range"],
+.video-box:-webkit-full-screen input[type="range"] {
+  height: 6px;          /* 🔥 মোটা */
+}
+
+.video-box:fullscreen input[type="range"]::-webkit-slider-thumb,
+.video-box:-webkit-full-screen input[type="range"]::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+}
+
+
+.video-box:fullscreen .player-bottom button,
+.video-box:-webkit-full-screen .player-bottom button {
+  font-size: 22px;
+}
+
+
+.video-box:fullscreen #curTime,
+.video-box:fullscreen #durTime {
+  font-size: 13px;
+  padding: 4px 8px;
+}
+
+
+/* =========================
+   🎚️ RANGE HIGHLIGHT (GLOW)
+   ========================= */
+
+input[type="range"]::-webkit-slider-thumb {
+  background: #00b45a;
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.8),
+    0 0 10px rgba(0,180,90,0.9); /* 🔥 glow */
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #00b45a;
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.8),
+    0 0 10px rgba(0,180,90,0.9);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb,
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.9),
+    0 0 14px rgba(0,180,90,1);
+}
+
+input[type="range"]:hover,
+input[type="range"]:active {
+  background: rgba(255,255,255,0.4);
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #00b45a 0%,
+    #00b45a var(--progress, 0%),
+    rgba(255,255,255,0.25) var(--progress, 0%)
+  );
+  border-radius: 50px;
+}
+
+
+/* =========================
+   ⚙ SETTINGS – MULTI POPUP
+   ========================= */
+
+.settings-menu{
+  position:absolute;
+  right:12px;
+  bottom:60px;
+  max-height:60%;
+  overflow-y:auto;
+  background:rgba(0,0,0,0.92);
+  border-radius:12px;
+  padding:12px;
+  width:180px;
+  display:none;
+  z-index:500;
+}
+
+.video-box:fullscreen .settings-menu,
+.video-box:-webkit-full-screen .settings-menu{
+  bottom:90px;
+}
+
+
+.settings-page{
+  display:none;
+}
+
+.settings-page.active{
+  display:block;
+}
+
+
+
+/* 🔊 Volume Steps */
+.volume-steps{
+  display:flex;
+  gap:4px;
+  align-items:center;
+}
+
+.volume-steps span{
+  width:6px;
+  height:16px;
+  background:rgba(255,255,255,0.25);
+  border-radius:3px;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+/* active volume */
+.volume-steps span.active{
+  background:#00b45a;
+  box-shadow:0 0 6px rgba(0,180,90,0.9);
+}
+
+/* hover polish */
+.volume-steps span:hover{
+  background:rgba(255,255,255,0.5);
+}
+
+
+/* Bottom icons row */
+.bottom-icons{
+  display: flex;
+  align-items: center;
+}
+
+/* LIVE → সবসময় বামে */
+.bottom-icons .live-badge{
+  margin-right: auto;   /* 🔥 সবকিছুকে ডানে ঠেলে দেয় */
+}
+
+/* বাকি সব → ডানে */
+.bottom-icons input,
+.bottom-icons button{
+  flex-shrink: 0;
 }
 </style>
 </head>
@@ -793,9 +1077,16 @@ margin-bottom:120px;
   <div class="row bottom-icons">
     <span class="live-badge">LIVE</span>
 
-    <input type="range" id="volBar" min="0" max="1" step="0.01" value="1">
+<div class="volume-steps" id="volumeSteps">
+  <span data-vol="0.2"></span>
+  <span data-vol="0.4"></span>
+  <span data-vol="0.6"></span>
+  <span data-vol="0.8"></span>
+  <span data-vol="1"></span>
+</div>
 
-    <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+<button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+
     <button id="settingsBtn"><i class="fas fa-cog"></i></button>
     <button id="pipBtn"><i class="fas fa-clone"></i></button>
     <button id="fsBtn"><i class="fas fa-expand"></i></button>
@@ -803,12 +1094,36 @@ margin-bottom:120px;
 
 </div>
 
-<!-- SETTINGS MENU -->
-<div class="settings-menu" id="settingsMenu">
-  <button data-speed="0.5">Speed 0.5×</button>
-  <button data-speed="1">Speed 1×</button>
-  <button data-speed="1.5">Speed 1.5×</button>
-  <button data-speed="2">Speed 2×</button>
+<!-- ⚙️ SETTINGS MENU -->
+<div class="settings-menu" id="settingsMenu" onclick="event.stopPropagation()">
+
+  <!-- MAIN MENU -->
+  <div class="settings-page active" id="settingsMain">
+    <button class="settings-item" id="openSpeed">
+      Playback Speed <span>›</span>
+    </button>
+    <button class="settings-item" id="openQuality">
+      Quality <span>›</span>
+    </button>
+  </div>
+
+  <!-- SPEED MENU -->
+  <div class="settings-page" id="speedMenu">
+    <button class="settings-back">‹ Back</button>
+    <button data-speed="0.5">0.5×</button>
+    <button data-speed="1" class="active">Normal</button>
+    <button data-speed="1.5">1.5×</button>
+    <button data-speed="2">2×</button>
+  </div>
+
+  <!-- QUALITY MENU -->
+  <div class="settings-page" id="qualityMenu">
+    <button class="settings-back">‹ Back</button>
+    <div id="qualityList">
+      <button data-quality="-1" class="active">Auto</button>
+    </div>
+  </div>
+
 </div>
 
 
@@ -1137,24 +1452,68 @@ if (channelInfo[id]?.premium) {
         hls.loadSource(streamUrl);
         hls.attachMedia(video);
 
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            video.muted = false;   // 🔥 click হলে sound allow
-            video.play().catch(err => {
-                console.log("Play blocked:", err);
-            });
-        });
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
 
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = streamUrl;
-        video.play();
-    }
+    /* ▶️ autoplay */
+    video.muted = false;
+    video.play().catch(err => {
+        console.log("Play blocked:", err);
+    });
+
+    /* =========================
+       ⚙ QUALITY MENU BUILD
+    ========================= */
+
+    const qualityList = document.getElementById('qualityList');
+    if (!qualityList) return;
+
+    qualityList.innerHTML = '';
+
+    /* 🔄 AUTO QUALITY */
+    const autoBtn = document.createElement('button');
+    autoBtn.textContent = 'Auto';
+    autoBtn.classList.add('active');
+
+    autoBtn.onclick = (e)=>{
+        e.stopPropagation();
+        hls.currentLevel = -1;
+
+        qualityList.querySelectorAll('button')
+          .forEach(b=>b.classList.remove('active'));
+        autoBtn.classList.add('active');
+    };
+
+    qualityList.appendChild(autoBtn);
+
+    /* 📺 MANUAL QUALITIES */
+    hls.levels.forEach((lvl, i)=>{
+        const btn = document.createElement('button');
+        btn.textContent = `${lvl.height}p`;
+
+        btn.onclick = (e)=>{
+            e.stopPropagation();
+            hls.currentLevel = i;
+
+            qualityList.querySelectorAll('button')
+              .forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+
+        qualityList.appendChild(btn);
+    });
+
+});
+
+   }
 }
 </script>
 
 <script>
 /* =========================
    ELEMENTS
+  
 ========================= */
+
 const video = document.getElementById('tvPlayer');
 const box = document.querySelector('.video-box');
 
@@ -1170,19 +1529,65 @@ const seekBar = document.getElementById('seekBar');
 const curTime = document.getElementById('curTime');
 const durTime = document.getElementById('durTime');
 
-const volBar = document.getElementById('volBar');
+
 const muteBtn = document.getElementById('muteBtn');
 
 const fsBtn = document.getElementById('fsBtn');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
 const pipBtn = document.getElementById('pipBtn');
 const settingsBtn = document.getElementById('settingsBtn');
 const settingsMenu = document.getElementById('settingsMenu');
+
+/* =========================
+   VOLUME STEPS (5 BARS)
+========================= */
+
+const volumeSteps = document.querySelectorAll('#volumeSteps span');
+
+volumeSteps.forEach((bar)=>{
+  bar.addEventListener('click', (e)=>{
+    e.stopPropagation();
+
+    const vol = Number(bar.dataset.vol);
+    video.volume = vol;
+    video.muted = false;
+
+    updateVolumeUI(vol);
+  });
+});
+
+function updateVolumeUI(vol){
+  volumeSteps.forEach((bar)=>{
+    bar.classList.toggle(
+      'active',
+      Number(bar.dataset.vol) <= vol
+    );
+  });
+
+  muteBtn.innerHTML = vol === 0
+    ? '<i class="fas fa-volume-mute"></i>'
+    : '<i class="fas fa-volume-up"></i>';
+}
+
+/* mute toggle */
+muteBtn.onclick = e=>{
+  e.stopPropagation();
+
+  video.muted = !video.muted;
+
+  if(video.muted){
+    updateVolumeUI(0);
+  }else{
+    updateVolumeUI(video.volume || 0.6);
+  }
+};
 
 /* =========================
    STATE
 ========================= */
 let hideTimer = null;
 let controlsVisible = false;
+let settingsOpen = false;
 
 /* =========================
    INITIAL STATE
@@ -1215,10 +1620,17 @@ video.addEventListener('pause', ()=>{
   showControls(); // pause হলে দেখাবে
 });
 
+
+
 /* =========================
    PLAYER CLICK → TOGGLE CONTROLS
 ========================= */
 box.addEventListener('click', ()=>{
+  if(settingsOpen){
+    settingsOpen = false;
+    settingsMenu.style.display = 'none';
+  }
+
   controlsVisible ? hideControls() : showControls();
 });
 
@@ -1241,11 +1653,14 @@ function hideControls(){
 
 function startAutoHide(){
   clearTimeout(hideTimer);
+
+  if(settingsOpen) return;
+
   hideTimer = setTimeout(()=>{
-    if(!video.paused){
+    if(!video.paused && !settingsOpen){
       hideControls();
     }
-  }, 5000);
+  },5000);
 }
 
 /* =========================
@@ -1279,15 +1694,14 @@ seekBar.oninput = e=>{
   if(video.duration){
     video.currentTime = (seekBar.value/100)*video.duration;
   }
+  
+ seekBar.style.setProperty('--progress', seekBar.value + '%');
 };
 
 /* =========================
    VOLUME
 ========================= */
-volBar.oninput = e=>{
-  e.stopPropagation();
-  video.volume = volBar.value;
-};
+
 
 muteBtn.onclick = e=>{
   e.stopPropagation();
@@ -1298,16 +1712,37 @@ muteBtn.onclick = e=>{
 };
 
 /* =========================
-   FULLSCREEN (FIXED)
+   FULLSCREEN (FINAL FIX)
 ========================= */
-fsBtn.onclick = e=>{
-  e.stopPropagation(); // 🔥 এটা না থাকলে কাজ করবে না
-  if(!document.fullscreenElement){
-    box.requestFullscreen().catch(()=>{});
-  }else{
-    document.exitFullscreen();
+fsBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // 🔥 player click আটকায়
+
+  const el = document.fullscreenElement;
+
+  if (!el) {
+    if (box.requestFullscreen) {
+      box.requestFullscreen();
+    } else if (box.webkitRequestFullscreen) {
+      box.webkitRequestFullscreen();
+    }
+
+    // 📱 mobile orientation lock (optional)
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(()=>{});
+    }
+
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
   }
-};
+});
 
 /* =========================
    PIP
@@ -1324,11 +1759,19 @@ pipBtn.onclick = async e=>{
 /* =========================
    SETTINGS
 ========================= */
-settingsBtn.onclick = e=>{
+settingsBtn.addEventListener('click', (e)=>{
   e.stopPropagation();
-  settingsMenu.style.display =
-    settingsMenu.style.display === 'block' ? 'none' : 'block';
-};
+
+  settingsOpen = !settingsOpen;
+  settingsMenu.style.display = settingsOpen ? 'block' : 'none';
+
+  if(settingsOpen){
+    clearTimeout(hideTimer);   // auto hide বন্ধ
+    showControls();
+  }else{
+    startAutoHide();
+  }
+});
 
 settingsMenu?.querySelectorAll('[data-speed]').forEach(b=>{
   b.onclick = ()=>{
@@ -1357,6 +1800,90 @@ function format(t){
   const s = Math.floor(t%60).toString().padStart(2,'0');
   return `${m}:${s}`;
 }
+
+
+
+
+
+
+fullscreenBtn.addEventListener('click', function (e) {
+  e.stopPropagation();
+
+  if (!document.fullscreenElement) {
+
+    // 🔥 fullscreen
+    box.requestFullscreen();
+
+    // 🔥 landscape lock (mobile)
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(()=>{});
+    }
+
+  } else {
+
+    // 🔥 exit fullscreen
+    document.exitFullscreen();
+
+    // 🔥 unlock orientation
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
+  }
+});
+
+
+
+/* =========================
+   SETTINGS POPUP LOGIC
+========================= */
+
+/* =========================
+   SETTINGS POPUP LOGIC
+========================= */
+
+const settingsMain = document.getElementById('settingsMain');
+const speedMenu   = document.getElementById('speedMenu');
+const qualityMenu = document.getElementById('qualityMenu');
+
+function showSettingsPage(page){
+  [settingsMain, speedMenu, qualityMenu].forEach(p=>{
+    p.classList.remove('active');
+  });
+  page.classList.add('active');
+}
+
+/* open sub menus */
+document.getElementById('openSpeed').onclick = (e)=>{
+  e.stopPropagation();
+  showSettingsPage(speedMenu);
+};
+
+document.getElementById('openQuality').onclick = (e)=>{
+  e.stopPropagation();
+  showSettingsPage(qualityMenu);
+};
+
+/* back buttons */
+document.querySelectorAll('.settings-back').forEach(btn=>{
+  btn.onclick = (e)=>{
+    e.stopPropagation();
+    showSettingsPage(settingsMain);
+  };
+});
+/* speed */
+speedMenu.querySelectorAll('[data-speed]').forEach(btn=>{
+  btn.onclick = ()=>{
+    video.playbackRate = Number(btn.dataset.speed);
+
+    speedMenu.querySelectorAll('button')
+      .forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  };
+});
+
+
+
+
 </script>
 </body>
 </html>
