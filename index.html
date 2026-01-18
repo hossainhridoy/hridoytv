@@ -1004,28 +1004,25 @@ input[type="range"]::-webkit-slider-runnable-track {
   flex-shrink: 0;
 }
 
-
-/* =========================
-   🎯 PLAYER CLICK SAFE FIX
-   ========================= */
-
-/* player এর ভেতরে overlay click block করবে না */
-.video-box .center-controls,
-.video-box .player-bottom,
-.video-box .player-loading,
-.video-box .player-watermark {
-    pointer-events: none;
+.app-container {
+    display: flex;
+    flex-direction: row; /* ডেস্কটপে পাশাপাশি থাকবে */
+    height: 100%;
+    overflow: hidden;
 }
 
-/* কিন্তু channel area সবসময় clickable */
-.content-area,
-.channel-container,
-.channel-grid,
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column; /* মোবাইলে উপর-নিচ */
+    }
+}
+
 .channel-card {
-    pointer-events: auto !important;
-    position: relative;
-    z-index: 9999;
+    cursor: pointer;
+    pointer-events: auto; /* ক্লিক নিশ্চিত করতে */
+    z-index: 1;
 }
+
 
 
 /* 🎯 Buttons should still work */
@@ -1057,7 +1054,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 <div id="preloader">
     <div class="loader-content">
         <img src="https://i.postimg.cc/PJzPVLjG/hridoylive.png" class="loader-logo">
-        <h1 class="loader-title" style="color: green">HridoyTV</h1> <div class="brand-subtitle">
+        <h1 class="loader-title" style="color: green">HridoyLive</h1> <div class="brand-subtitle">
     Premium Live TV • Sports & News
 </div>
     </div>
