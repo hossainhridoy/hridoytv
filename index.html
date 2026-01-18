@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    <body>
 <head>
+       
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="refresh" content="7200">
+    
 
     <meta name="description" content="Watch Live TV Channels On HridoyLive. Join Now For The Best Streaming Experience!">
     <meta name="keywords" content="HridoyTV, HridoyLive, Bdix Live TV, Hossain Hridoy, IPTV, Lice sports, Live News">
@@ -387,7 +388,7 @@ border-top: 1px solid #222;
     letter-spacing: 1.2px;
     text-align: center;
 
-    color: rgba(0, 180, 90, 0.85); !important;  /* soft green */
+    color: rgba(0, 180, 90, 0.85) !important;  /* soft green */
     text-transform: uppercase;
 
     opacity: 0.95;
@@ -1397,6 +1398,7 @@ function loadChannel(id, el) { document.querySelectorAll('.channel-card').forEac
 
     // 🔴 পুরানো stream clean
     if (hls) {
+    hls.detachMedia();
         hls.destroy();
         hls = null;
     }
@@ -1552,18 +1554,6 @@ function updateVolumeUI(vol){
     : '<i class="fas fa-volume-up"></i>';
 }
 
-/* mute toggle */
-muteBtn.onclick = e=>{
-  e.stopPropagation();
-
-  video.muted = !video.muted;
-
-  if(video.muted){
-    updateVolumeUI(0);
-  }else{
-    updateVolumeUI(video.volume || 0.6);
-  }
-};
 
 /* =========================
    STATE
