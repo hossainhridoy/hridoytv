@@ -1432,8 +1432,8 @@ const channelInfo = {
 let hls = null;
 </script>
 <script>
-    console.log("Channel clicked:", id);
-function loadChannel(id, el) { document.querySelectorAll('.channel-card').forEach(c => c.classList.remove('active'));
+
+function loadChannel(id, el) { console.log("Channel clicked:", id); document.querySelectorAll('.channel-card').forEach(c => c.classList.remove('active'));
     el.classList.add('active');
 
     const video = document.getElementById("tvPlayer");
