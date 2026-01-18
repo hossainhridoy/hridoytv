@@ -1033,6 +1033,32 @@ input[type="range"]::-webkit-slider-runnable-track {
     z-index: 1;
   }
 }
+
+
+/* =========================
+   🖱️ DESKTOP CLICK FIX
+   ========================= */
+@media (min-width: 769px) {
+
+  /* 🔥 Channel side always clickable */
+  .content-area,
+  .channel-container,
+  .channel-grid,
+  .channel-card {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto !important;
+  }
+
+  /* 🔒 Player overlays will NOT block clicks */
+  .center-controls,
+  .player-bottom,
+  .player-loading,
+  .player-watermark {
+    pointer-events: none !important;
+  }
+
+}
 </style>
 </head>
 <body>
