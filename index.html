@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">   
+<html lang="en">    <body>
 <head>
        
     <meta charset="utf-8">
@@ -1003,6 +1003,36 @@ input[type="range"]::-webkit-slider-runnable-track {
 .bottom-icons button{
   flex-shrink: 0;
 }
+
+
+/* 🛑 Player overlay should NOT block clicks */
+.center-controls,
+.player-bottom,
+.player-loading,
+.player-watermark {
+    pointer-events: none;
+}
+
+/* 🎯 Buttons should still work */
+.center-controls button,
+.player-bottom button,
+.player-bottom input,
+.volume-steps span {
+    pointer-events: auto;
+}
+
+
+@media (min-width: 769px) {
+  .content-area {
+    position: relative;
+    z-index: 5;
+  }
+
+  .player-area {
+    position: relative;
+    z-index: 1;
+  }
+}
 </style>
 </head>
 <body>
@@ -1010,7 +1040,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 <div id="preloader">
     <div class="loader-content">
         <img src="https://i.postimg.cc/PJzPVLjG/hridoylive.png" class="loader-logo">
-        <h1 class="loader-title" style="color: green">HridoTV</h1> <div class="brand-subtitle">
+        <h1 class="loader-title" style="color: green">HridoyLive</h1> <div class="brand-subtitle">
     Premium Live TV • Sports & News
 </div>
     </div>
@@ -1385,6 +1415,7 @@ const channelInfo = {
 let hls = null;
 </script>
 <script>
+    console.log("Channel clicked:", id);
 function loadChannel(id, el) { document.querySelectorAll('.channel-card').forEach(c => c.classList.remove('active'));
     el.classList.add('active');
 
