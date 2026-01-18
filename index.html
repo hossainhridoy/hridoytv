@@ -1738,10 +1738,8 @@ muteBtn.onclick = e=>{
     : '<i class="fas fa-volume-up"></i>';
 };
 
-/* =========================
-   FULLSCREEN (FINAL FIX)
-========================= */
-
+fsBtn.addEventListener('click', function (e) {
+  e.stopPropagation();
 
   const el = document.fullscreenElement;
 
@@ -1752,7 +1750,6 @@ muteBtn.onclick = e=>{
       box.webkitRequestFullscreen();
     }
 
-    // 📱 mobile orientation lock (optional)
     if (screen.orientation && screen.orientation.lock) {
       screen.orientation.lock('landscape').catch(()=>{});
     }
