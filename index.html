@@ -1005,12 +1005,27 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 
-/* 🛑 Player overlay should NOT block clicks */
-.center-controls,
-.player-bottom,
-.player-loading,
-.player-watermark {
+/* =========================
+   🎯 PLAYER CLICK SAFE FIX
+   ========================= */
+
+/* player এর ভেতরে overlay click block করবে না */
+.video-box .center-controls,
+.video-box .player-bottom,
+.video-box .player-loading,
+.video-box .player-watermark {
     pointer-events: none;
+}
+
+/* কিন্তু channel area সবসময় clickable */
+.content-area,
+.channel-container,
+.channel-grid,
+.channel-card {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 9999;
+}
 }
 
 /* 🎯 Buttons should still work */
