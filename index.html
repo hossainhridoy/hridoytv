@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZXQ8N910Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-FZXQ8N910Y');
-    </script>
-
+       
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="refresh" content="7200">
+    
 
     <meta name="description" content="Watch Live TV Channels On HridoyLive. Join Now For The Best Streaming Experience!">
     <meta name="keywords" content="HridoyTV, HridoyLive, Bdix Live TV, Hossain Hridoy, IPTV, Lice sports, Live News">
@@ -32,6 +25,10 @@
             background-color: var(--bg-color); color: #000; 
             font-family: 'Poppins', sans-serif; overflow: hidden;
         }
+        
+        .channel-container {
+    overflow-y: auto;
+    pointer-events: auto;}
  
         /* --- Preloader --- */
         #preloader {
@@ -395,7 +392,7 @@ border-top: 1px solid #222;
     letter-spacing: 1.2px;
     text-align: center;
 
-    color: rgba(0, 180, 90, 0.85); !important;  /* soft green */
+    color: rgba(0, 180, 90, 0.85) !important;  /* soft green */
     text-transform: uppercase;
 
     opacity: 0.95;
@@ -571,6 +568,484 @@ margin-bottom:120px;
     top: 12px;
     right: 12px;
 }
+
+/* =========================
+   🔥 TRUE FULLSCREEN FIX
+   ========================= */
+
+/* Fullscreen container */
+.video-box:fullscreen,
+.video-box:-webkit-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: black;
+}
+
+/* Video fill screen */
+.video-box:fullscreen video,
+.video-box:-webkit-full-screen video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;   /* 🔥 পুরো স্ক্রিন ভরবে */
+    margin: 0 !important;
+}
+
+/* =========================
+   🔰 FINAL FULLSCREEN LOGO
+   ========================= */
+
+.video-box:fullscreen .player-watermark,
+.video-box:-webkit-full-screen .player-watermark {
+    position: fixed;
+    top: 40px;        /* 🔥 safe distance */
+    right: 40px;
+    z-index: 9999;
+    opacity: 0.95;
+}
+
+.video-box:fullscreen .player-watermark img,
+.video-box:-webkit-full-screen .player-watermark img {
+    width: 96px;      /* 🔥 বড় স্ক্রিনে বড় */
+    max-width: none;
+}
+
+/* Mobile fullscreen */
+@media (max-width: 768px) {
+    .video-box:fullscreen .player-watermark img {
+        width: 64px;
+    }
+}
+
+
+
+/* CENTER */
+.center-controls {
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  z-index:15;
+}
+
+.center-controls button {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:40px;
+}
+
+/* BOTTOM */
+.player-bottom {
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:96%;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  z-index:20;
+}
+
+.player-bottom .row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+}
+
+.player-bottom input[type=range] {
+  flex:1;
+}
+
+.bottom-icons {
+  justify-content:space-between;
+}
+
+.player-bottom button {
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:18px;
+}
+
+.live-badge {
+  background:red;
+  padding:2px 6px;
+  font-size:11px;
+  border-radius:4px;
+}
+
+.controls-hidden {
+  opacity:0;
+  pointer-events:none;
+}
+
+/* SETTINGS */
+
+.settings-menu button {
+  background:none;
+  border:none;
+  color:#fff;
+  padding:8px 12px;
+  width:100%;
+  text-align:left;
+}
+
+
+/* 🔄 PLAYER LOADING */
+.player-loading{
+  position:absolute;
+  inset:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:300;
+}
+
+.spinner{
+  width:48px;
+  height:48px;
+  border:4px solid rgba(255,255,255,0.2);
+  border-top:4px solid #00b45a;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
+
+
+
+.settings-group{
+  margin-bottom:10px;
+}
+
+.settings-title{
+  font-size:11px;
+  color:#aaa;
+  margin-bottom:6px;
+}
+
+.settings-menu button{
+  width:100%;
+  background:none;
+  border:none;
+  color:#fff;
+  padding:6px;
+  text-align:left;
+  font-size:12px;
+}
+
+.settings-menu button.active{
+  color:#00b45a;
+}
+
+
+/* =========================
+   🎚️ CUSTOM RANGE STYLE
+   ========================= */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;                 /* 🔥 চিকন বার */
+  background: rgba(255,255,255,0.25);
+  border-radius: 50px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 🔥 Filled part (Chrome / Edge) */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #00b45a 0%,
+    #00b45a var(--progress, 0%),
+    rgba(255,255,255,0.25) var(--progress, 0%)
+  );
+  border-radius: 50px;
+}
+
+/* 🔥 Thumb (dot) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #00b45a;
+  border-radius: 50%;
+  margin-top: -4px;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50px;
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 4px;
+  background: #00b45a;
+  border-radius: 50px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #00b45a;
+  border-radius: 50%;
+  border: none;
+}
+
+
+/* ⏱️ Seekbar Time Text (Small & Clean) */
+#curTime,
+#durTime {
+  font-size: 10px;        /* 🔥 ছোট সাইজ */
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  min-width: 34px;        /* 🔥 layout নড়বে না */
+  text-align: center;
+  letter-spacing: 0.3px;
+  
+ background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+
+/* 🔥 UNIVERSAL VISIBILITY FIX (TEXT + ICON + FA) */
+.player-bottom,
+.center-controls,
+#curTime,
+#durTime,
+.player-bottom i,
+.center-controls i {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+
+
+/* =========================
+   FULLSCREEN UI SCALE FIX
+   ========================= */
+
+.video-box:fullscreen,
+.video-box:-webkit-full-screen {
+  font-size: 16px; /* 🔥 base size বাড়ালাম */
+}
+
+.video-box:fullscreen .center-controls button,
+.video-box:-webkit-full-screen .center-controls button {
+  font-size: 64px;      /* 🔥 বড় আইকন */
+}
+
+.video-box:fullscreen .player-bottom,
+.video-box:-webkit-full-screen .player-bottom {
+  bottom: 40px;         /* 🔥 নিচ থেকে উপরে */
+  width: 94%;
+  gap: 10px;
+}
+
+.video-box:fullscreen input[type="range"],
+.video-box:-webkit-full-screen input[type="range"] {
+  height: 6px;          /* 🔥 মোটা */
+}
+
+.video-box:fullscreen input[type="range"]::-webkit-slider-thumb,
+.video-box:-webkit-full-screen input[type="range"]::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+}
+
+
+.video-box:fullscreen .player-bottom button,
+.video-box:-webkit-full-screen .player-bottom button {
+  font-size: 22px;
+}
+
+
+.video-box:fullscreen #curTime,
+.video-box:fullscreen #durTime {
+  font-size: 13px;
+  padding: 4px 8px;
+}
+
+
+/* =========================
+   🎚️ RANGE HIGHLIGHT (GLOW)
+   ========================= */
+
+input[type="range"]::-webkit-slider-thumb {
+  background: #00b45a;
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.8),
+    0 0 10px rgba(0,180,90,0.9); /* 🔥 glow */
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #00b45a;
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.8),
+    0 0 10px rgba(0,180,90,0.9);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb,
+input[type="range"]:active::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 2px rgba(0,0,0,0.9),
+    0 0 14px rgba(0,180,90,1);
+}
+
+input[type="range"]:hover,
+input[type="range"]:active {
+  background: rgba(255,255,255,0.4);
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #00b45a 0%,
+    #00b45a var(--progress, 0%),
+    rgba(255,255,255,0.25) var(--progress, 0%)
+  );
+  border-radius: 50px;
+}
+
+
+/* =========================
+   ⚙ SETTINGS – MULTI POPUP
+   ========================= */
+
+.settings-menu{
+  position:absolute;
+  right:12px;
+  bottom:60px;
+  max-height:60%;
+  overflow-y:auto;
+  background:rgba(0,0,0,0.92);
+  border-radius:12px;
+  padding:12px;
+  width:180px;
+  display:none;
+  z-index:500;
+}
+
+.video-box:fullscreen .settings-menu,
+.video-box:-webkit-full-screen .settings-menu{
+  bottom:90px;
+}
+
+
+.settings-page{
+  display:none;
+}
+
+.settings-page.active{
+  display:block;
+}
+
+
+
+/* 🔊 Volume Steps */
+.volume-steps{
+  display:flex;
+  gap:4px;
+  align-items:center;
+}
+
+.volume-steps span{
+  width:6px;
+  height:16px;
+  background:rgba(255,255,255,0.25);
+  border-radius:3px;
+  cursor:pointer;
+  transition:0.25s;
+}
+
+/* active volume */
+.volume-steps span.active{
+  background:#00b45a;
+  box-shadow:0 0 6px rgba(0,180,90,0.9);
+}
+
+/* hover polish */
+.volume-steps span:hover{
+  background:rgba(255,255,255,0.5);
+}
+
+
+/* Bottom icons row */
+.bottom-icons{
+  display: flex;
+  align-items: center;
+}
+
+/* LIVE → সবসময় বামে */
+.bottom-icons .live-badge{
+  margin-right: auto;   /* 🔥 সবকিছুকে ডানে ঠেলে দেয় */
+}
+
+/* বাকি সব → ডানে */
+.bottom-icons input,
+.bottom-icons button{
+  flex-shrink: 0;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: row; /* ডেস্কটপে পাশাপাশি থাকবে */
+    height: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column; /* মোবাইলে উপর-নিচ */
+    }
+}
+
+.channel-card {
+    cursor: pointer;
+    pointer-events: auto; /* ক্লিক নিশ্চিত করতে */
+    z-index: 1;
+}
+
+
+
+/* 🎯 Buttons should still work */
+.center-controls button,
+.player-bottom button,
+.player-bottom input,
+.volume-steps span {
+    pointer-events: auto;
+}
+
+
+
+.player-area {
+    z-index: 1;
+}
+
+.content-area {
+    z-index: 10;
+}
 </style>
 </head>
 <body>
@@ -597,11 +1072,87 @@ margin-bottom:120px;
           <div class="video-box">
 <video
   id="tvPlayer"
-  controls
+  
   playsinline
   webkit-playsinline
   poster="https://i.postimg.cc/PJzPVLjG/hridoylive.png"
 ></video>
+
+<!-- 🔄 LOADING OVERLAY -->
+<div class="player-loading" id="playerLoading">
+  <div class="spinner"></div>
+</div>
+
+<!-- CENTER CONTROLS -->
+<div class="center-controls" id="centerControls">
+  <button id="prevBtn"><i class="fas fa-backward"></i></button>
+  <button id="playBtn"><i class="fas fa-play"></i></button>
+  <button id="nextBtn"><i class="fas fa-forward"></i></button>
+</div>
+
+<!-- BOTTOM CONTROLS -->
+<div class="player-bottom controls-hidden" id="playerControls">
+
+  <!-- Line 1 -->
+  <div class="row">
+    <span id="curTime">0:00</span>
+    <input type="range" id="seekBar" min="0" max="100" value="0">
+    <span id="durTime">LIVE</span>
+  </div>
+
+  <!-- Line 2 -->
+  <div class="row bottom-icons">
+    <span class="live-badge">LIVE</span>
+
+<div class="volume-steps" id="volumeSteps">
+  <span data-vol="0.2"></span>
+  <span data-vol="0.4"></span>
+  <span data-vol="0.6"></span>
+  <span data-vol="0.8"></span>
+  <span data-vol="1"></span>
+</div>
+
+<button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+
+    <button id="settingsBtn"><i class="fas fa-cog"></i></button>
+    <button id="pipBtn"><i class="fas fa-clone"></i></button>
+    <button id="fsBtn"><i class="fas fa-expand"></i></button>
+  </div>
+
+</div>
+
+<!-- ⚙️ SETTINGS MENU -->
+<div class="settings-menu" id="settingsMenu" onclick="event.stopPropagation()">
+
+  <!-- MAIN MENU -->
+  <div class="settings-page active" id="settingsMain">
+    <button class="settings-item" id="openSpeed">
+      Playback Speed <span>›</span>
+    </button>
+    <button class="settings-item" id="openQuality">
+      Quality <span>›</span>
+    </button>
+  </div>
+
+  <!-- SPEED MENU -->
+  <div class="settings-page" id="speedMenu">
+    <button class="settings-back">‹ Back</button>
+    <button data-speed="0.5">0.5×</button>
+    <button data-speed="1" class="active">Normal</button>
+    <button data-speed="1.5">1.5×</button>
+    <button data-speed="2">2×</button>
+  </div>
+
+  <!-- QUALITY MENU -->
+  <div class="settings-page" id="qualityMenu">
+    <button class="settings-back">‹ Back</button>
+    <div id="qualityList">
+      <button data-quality="-1" class="active">Auto</button>
+    </div>
+  </div>
+
+</div>
+
 
 <!-- 🔰 Player Watermark Logo -->
 <div class="player-watermark">
@@ -855,7 +1406,7 @@ function openTab(evt, catId) {
 // চ্যানেল স্ট্রিম লিংক
 const channels = {
     tsports: "https://hridoytv.hridoyx.workers.dev/channel/jamunatv",
-    nagoriktv: "https://hridoytv.hridoyx.workers.dev/channel/jamunatv"
+    nagoriktv: "https://server.zillarbarta.com/zillarbarta/index.m3u8"
 };
 
 // চ্যানেল ইনফো
@@ -877,7 +1428,8 @@ const channelInfo = {
 let hls = null;
 </script>
 <script>
-function loadChannel(id, el) { document.querySelectorAll('.channel-card').forEach(c => c.classList.remove('active'));
+
+function loadChannel(id, el) { console.log("Channel clicked:", id); document.querySelectorAll('.channel-card').forEach(c => c.classList.remove('active'));
     el.classList.add('active');
 
     const video = document.getElementById("tvPlayer");
@@ -890,6 +1442,7 @@ function loadChannel(id, el) { document.querySelectorAll('.channel-card').forEac
 
     // 🔴 পুরানো stream clean
     if (hls) {
+    hls.detachMedia();
         hls.destroy();
         hls = null;
     }
@@ -928,37 +1481,425 @@ if (channelInfo[id]?.premium) {
         hls.loadSource(streamUrl);
         hls.attachMedia(video);
 
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            video.muted = false;   // 🔥 click হলে sound allow
-            video.play().catch(err => {
-                console.log("Play blocked:", err);
-            });
-        });
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
 
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = streamUrl;
-        video.play();
-    }
+    /* ▶️ autoplay */
+    video.muted = false;
+    video.play().catch(err => {
+        console.log("Play blocked:", err);
+    });
+
+    /* =========================
+       ⚙ QUALITY MENU BUILD
+    ========================= */
+
+    const qualityList = document.getElementById('qualityList');
+    if (!qualityList) return;
+
+    qualityList.innerHTML = '';
+
+    /* 🔄 AUTO QUALITY */
+    const autoBtn = document.createElement('button');
+    autoBtn.textContent = 'Auto';
+    autoBtn.classList.add('active');
+
+    autoBtn.onclick = (e)=>{
+        e.stopPropagation();
+        hls.currentLevel = -1;
+
+        qualityList.querySelectorAll('button')
+          .forEach(b=>b.classList.remove('active'));
+        autoBtn.classList.add('active');
+    };
+
+    qualityList.appendChild(autoBtn);
+
+    /* 📺 MANUAL QUALITIES */
+    hls.levels.forEach((lvl, i)=>{
+        const btn = document.createElement('button');
+        btn.textContent = `${lvl.height}p`;
+
+        btn.onclick = (e)=>{
+            e.stopPropagation();
+            hls.currentLevel = i;
+
+            qualityList.querySelectorAll('button')
+              .forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+
+        qualityList.appendChild(btn);
+    });
+
+});
+
+   }
 }
 </script>
 
 <script>
+/* =========================
+   ELEMENTS
+  
+========================= */
+
 const video = document.getElementById('tvPlayer');
-const fsBtn = document.getElementById('fullscreenBtn');
+const box = document.querySelector('.video-box');
 
-fsBtn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-        if (video.requestFullscreen) {
-            video.requestFullscreen();
-        } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen();
-        }
-    } else {
-        document.exitFullscreen();
-    }
+const centerControls = document.getElementById('centerControls');
+const controls = document.getElementById('playerControls');
+const loading = document.getElementById('playerLoading');
+
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+const seekBar = document.getElementById('seekBar');
+const curTime = document.getElementById('curTime');
+const durTime = document.getElementById('durTime');
+
+
+const muteBtn = document.getElementById('muteBtn');
+
+const fsBtn = document.getElementById('fsBtn');
+
+const pipBtn = document.getElementById('pipBtn');
+const settingsBtn = document.getElementById('settingsBtn');
+const settingsMenu = document.getElementById('settingsMenu');
+
+/* =========================
+   VOLUME STEPS (5 BARS)
+========================= */
+
+const volumeSteps = document.querySelectorAll('#volumeSteps span');
+
+volumeSteps.forEach((bar)=>{
+  bar.addEventListener('click', (e)=>{
+    e.stopPropagation();
+
+    const vol = Number(bar.dataset.vol);
+    video.volume = vol;
+    video.muted = false;
+
+    updateVolumeUI(vol);
+  });
 });
+
+function updateVolumeUI(vol){
+  volumeSteps.forEach((bar)=>{
+    bar.classList.toggle(
+      'active',
+      Number(bar.dataset.vol) <= vol
+    );
+  });
+
+  muteBtn.innerHTML = vol === 0
+    ? '<i class="fas fa-volume-mute"></i>'
+    : '<i class="fas fa-volume-up"></i>';
+}
+
+
+/* =========================
+   STATE
+========================= */
+let hideTimer = null;
+let controlsVisible = false;
+let settingsOpen = false;
+
+/* =========================
+   INITIAL STATE
+========================= */
+hideControls();          // ❗ শুরুতে কন্ট্রোল লুকানো
+loading.style.display = 'flex';
+
+/* =========================
+   PLAY / PAUSE (ONLY BUTTON)
+========================= */
+function togglePlay(){
+  video.paused ? video.play().catch(()=>{}) : video.pause();
+}
+
+playBtn.addEventListener('click', e=>{
+  e.stopPropagation();
+  togglePlay();
+});
+
+/* =========================
+   ICON SYNC
+========================= */
+video.addEventListener('play', ()=>{
+  playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  startAutoHide();
+});
+
+video.addEventListener('pause', ()=>{
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  showControls(); // pause হলে দেখাবে
+});
+
+
+
+/* =========================
+   PLAYER CLICK → TOGGLE CONTROLS
+========================= */
+box.addEventListener('click', ()=>{
+  if(settingsOpen){
+    settingsOpen = false;
+    settingsMenu.style.display = 'none';
+  }
+
+  controlsVisible ? hideControls() : showControls();
+});
+
+/* =========================
+   SHOW / HIDE
+========================= */
+function showControls(){
+  controls.classList.remove('controls-hidden');
+  centerControls.classList.remove('controls-hidden');
+  controlsVisible = true;
+  startAutoHide();
+}
+
+function hideControls(){
+  controls.classList.add('controls-hidden');
+  centerControls.classList.add('controls-hidden');
+  controlsVisible = false;
+  clearTimeout(hideTimer);
+}
+
+function startAutoHide(){
+  clearTimeout(hideTimer);
+
+  if(settingsOpen) return;
+
+  hideTimer = setTimeout(()=>{
+    if(!video.paused && !settingsOpen){
+      hideControls();
+    }
+  },5000);
+}
+
+/* =========================
+   SKIP
+========================= */
+prevBtn.onclick = e=>{
+  e.stopPropagation();
+  if(video.duration) video.currentTime = Math.max(0, video.currentTime - 10);
+};
+
+nextBtn.onclick = e=>{
+  e.stopPropagation();
+  if(video.duration) video.currentTime = Math.min(video.duration, video.currentTime + 10);
+};
+
+/* =========================
+   TIME / SEEK
+========================= */
+video.addEventListener('timeupdate', ()=>{
+  if(!video.duration){
+    durTime.textContent = 'LIVE';
+    return;
+  }
+  seekBar.value = (video.currentTime/video.duration)*100;
+  curTime.textContent = format(video.currentTime);
+  durTime.textContent = format(video.duration);
+});
+
+seekBar.oninput = e=>{
+  e.stopPropagation();
+  if(video.duration){
+    video.currentTime = (seekBar.value/100)*video.duration;
+  }
+  
+ seekBar.style.setProperty('--progress', seekBar.value + '%');
+};
+
+/* =========================
+   VOLUME
+========================= */
+
+
+muteBtn.onclick = e=>{
+  e.stopPropagation();
+  video.muted = !video.muted;
+  muteBtn.innerHTML = video.muted
+    ? '<i class="fas fa-volume-mute"></i>'
+    : '<i class="fas fa-volume-up"></i>';
+};
+
+/* =========================
+   FULLSCREEN (FINAL FIX)
+========================= */
+
+
+  const el = document.fullscreenElement;
+
+  if (!el) {
+    if (box.requestFullscreen) {
+      box.requestFullscreen();
+    } else if (box.webkitRequestFullscreen) {
+      box.webkitRequestFullscreen();
+    }
+
+    // 📱 mobile orientation lock (optional)
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(()=>{});
+    }
+
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
+  }
+});
+
+/* =========================
+   PIP
+========================= */
+pipBtn.onclick = async e=>{
+  e.stopPropagation();
+  try{
+    document.pictureInPictureElement
+      ? await document.exitPictureInPicture()
+      : await video.requestPictureInPicture();
+  }catch{}
+};
+
+/* =========================
+   SETTINGS
+========================= */
+settingsBtn.addEventListener('click', (e)=>{
+  e.stopPropagation();
+
+  settingsOpen = !settingsOpen;
+  settingsMenu.style.display = settingsOpen ? 'block' : 'none';
+
+  if(settingsOpen){
+    clearTimeout(hideTimer);   // auto hide বন্ধ
+    showControls();
+  }else{
+    startAutoHide();
+  }
+});
+
+settingsMenu?.querySelectorAll('[data-speed]').forEach(b=>{
+  b.onclick = ()=>{
+    video.playbackRate = Number(b.dataset.speed);
+    settingsMenu.style.display = 'none';
+  };
+});
+
+/* =========================
+   LOADING
+========================= */
+video.addEventListener('waiting', ()=>{
+  loading.style.display = 'flex';
+});
+
+video.addEventListener('canplay', ()=>{
+  loading.style.display = 'none';
+  // ❗ এখানে showControls() নাই — চ্যানেল লোডে কন্ট্রোল দেখাবে না
+});
+
+/* =========================
+   UTILS
+========================= */
+function format(t){
+  const m = Math.floor(t/60);
+  const s = Math.floor(t%60).toString().padStart(2,'0');
+  return `${m}:${s}`;
+}
+
+
+
+
+
+
+fullscreenBtn.addEventListener('click', function (e) {
+  e.stopPropagation();
+
+  if (!document.fullscreenElement) {
+
+    // 🔥 fullscreen
+    box.requestFullscreen();
+
+    // 🔥 landscape lock (mobile)
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(()=>{});
+    }
+
+  } else {
+
+    // 🔥 exit fullscreen
+    document.exitFullscreen();
+
+    // 🔥 unlock orientation
+    if (screen.orientation && screen.orientation.unlock) {
+      screen.orientation.unlock();
+    }
+  }
+});
+
+
+
+/* =========================
+   SETTINGS POPUP LOGIC
+========================= */
+
+/* =========================
+   SETTINGS POPUP LOGIC
+========================= */
+
+const settingsMain = document.getElementById('settingsMain');
+const speedMenu   = document.getElementById('speedMenu');
+const qualityMenu = document.getElementById('qualityMenu');
+
+function showSettingsPage(page){
+  [settingsMain, speedMenu, qualityMenu].forEach(p=>{
+    p.classList.remove('active');
+  });
+  page.classList.add('active');
+}
+
+/* open sub menus */
+document.getElementById('openSpeed').onclick = (e)=>{
+  e.stopPropagation();
+  showSettingsPage(speedMenu);
+};
+
+document.getElementById('openQuality').onclick = (e)=>{
+  e.stopPropagation();
+  showSettingsPage(qualityMenu);
+};
+
+/* back buttons */
+document.querySelectorAll('.settings-back').forEach(btn=>{
+  btn.onclick = (e)=>{
+    e.stopPropagation();
+    showSettingsPage(settingsMain);
+  };
+});
+/* speed */
+speedMenu.querySelectorAll('[data-speed]').forEach(btn=>{
+  btn.onclick = ()=>{
+    video.playbackRate = Number(btn.dataset.speed);
+
+    speedMenu.querySelectorAll('button')
+      .forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  };
+});
+
+
+
+
 </script>
-
-
 </body>
 </html>
